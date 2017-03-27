@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "outDir": "dist",
     "rootDir": ".",
@@ -20,7 +20,7 @@
     "useWebpackText": true
   },
   "angularCompilerOptions": {
-    "debug": false
+    "debug": true
   },
   "compileOnSave": false,
   "buildOnSave": false,

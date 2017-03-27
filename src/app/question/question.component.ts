@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import CustomValidators from '../forms/CustomValidators';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact-component.css']
+  selector: 'question',
+  templateUrl: './question.component.html',
+  styleUrls: ['./question-component.css']
 })
-export class ContactComponent implements OnInit {
+export class QuestionComponent implements OnInit {
   contactForm: FormGroup;
   constructor(private formBuilder: FormBuilder) {}
 

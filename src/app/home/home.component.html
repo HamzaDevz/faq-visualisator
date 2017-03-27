@@ -1,2 +1,5 @@
-<h3>Home Component</h3>
-<p>Welcome to Angular Seed</p>
+<gridster class="gridster" [options]="options">
+    <gridster-item [item]="question" *ngFor="let question of questions">
+        <p>{{question?.content}}</p>
+    </gridster-item>
+</gridster>
