@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
+    "target": "es5",
+    "module": "es6",
     "outDir": "dist",
     "rootDir": ".",
     "sourceMap": true,
@@ -11,11 +11,9 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "types": [""],
     "lib": ["es6", "dom"]
   },
-  "exclude": [
-    "node_modules"
-  ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true
   },

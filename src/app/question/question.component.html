@@ -1,36 +1,37 @@
-<h2>Contact Reactive Form</h2>
+<div>
+    <div *ngIf="userData">
+        <md-card class="question">
+            <div class="header">
+                <p>Give us your feedback</p>
+            </div>
 
-<form (ngSubmit)="submitForm()" [formGroup]="contactForm" novalidate>
-  <div class="form-content">
-    <label>
-      Nom:
-      <input type="text" formControlName="name" class="sd-form-control" placeholder="Enter your name.">
-    </label>
-    <label>
-      Prénom:
-      <input type="email" formControlName="email" class="sd-form-control" placeholder="Enter your email.">
-    </label>
-    <label>
-      Contenu:
-      <textarea formControlName="content" class="sd-form-control" placeholder="Content here."></textarea>
-    </label>
-    <div class="form-submit">
-      <button type="submit">Envoyer</button>
+            <md-card-content>
+                <form [formGroup]="questionForm" novalidate>
+                    <div class="form-content">
+                        <div>
+                            <md-input-container>
+                                <textarea mdInput required formControlName="content" placeholder="Your Feedback"></textarea>
+                            </md-input-container>
+                            <div [hidden]="questionForm.controls.content.valid || questionForm.controls.content.pristine"
+                                 class="error">
+                                Content is required
+                            </div>
+                        </div>
+                        <md-card-actions>
+                            <button md-button type="button" (click)="submitForm(questionForm.value)" [disabled]="!questionForm.valid">Submit</button>
+                        </md-card-actions>
+                    </div>
+                </form>
+                <div class="loader" *ngIf="loader">
+                    <md-progress-circle
+                            class="example-margin"
+                            color="warn"
+                            mode="indeterminate"
+                    >
+                    </md-progress-circle>
+                </div>
+            </md-card-content>
+        </md-card>
     </div>
-  </div>
-</form>
-
-<div class="form-value">
-  Form value:
-  <pre>
-    {{contactForm.value | json}}
-  </pre>
-  <p>
-    Status: {{contactForm.status}}
-  </p>
-  <p>
-    Valid: {{contactForm.valid}}
-  </p>
-  <p>Submit then open console to see full form.</p>
+    <user-form (userCreation)="userCreation($event)"></user-form>
 </div>
-

@@ -1,44 +1,40 @@
-/** Scope question **/
+/** Scope User **/
 
-.question {
+.user {
   padding: 0;
   width: 50%;
   margin: 0 auto;
 }
 
-.question md-card-content {
+.user md-card-content {
   padding: 20px;
 
 }
 
-.question .header {
+.user .header {
   background-color: #3498db;
   color: #ffffff;
 }
 
-.question .header p {
+.user .header p {
   text-align: center;
   padding: 20px;
 }
 
-.question .form-content {
+.user .form-content {
   text-align: center;
 }
 
-.question .form-content md-input-container {
+.user .form-content md-input-container {
   width: 50%;
 }
 
-.question .form-content md-input-container textarea {
-  height: 300px;
-}
-
-.question .error {
+.user .error {
   color: rgb(221,44,0);
   font-size: 12px;
 }
 
-.question .loader {
+.user .loader {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -46,7 +42,7 @@
   left: 0;
 }
 
-.question .loader:before {
+.user .loader:before {
   position: absolute;
   content: '';
   opacity: .5;
@@ -55,11 +51,10 @@
   height: 100%;
 }
 
-.question .loader md-progress-circle {
+.user .loader md-progress-circle {
   display: flex;
   height: 100%;
   width: 100px;
   overflow: hidden;
   margin: auto;
 }
-
