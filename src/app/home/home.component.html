@@ -2,4 +2,13 @@
     <gridster-item [item]="question" *ngFor="let question of questions">
         <p>{{question?.content}}</p>
     </gridster-item>
+
+    <div class="loader" *ngIf="loader">
+        <md-progress-circle
+                class="example-margin"
+                color="warn"
+                mode="indeterminate"
+        >
+        </md-progress-circle>
+    </div>
 </gridster>

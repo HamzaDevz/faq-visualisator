@@ -7,7 +7,7 @@ export class UserService {
   url : string;
 
   constructor(private http: Http) {
-    this.url = 'http://localhost:8888/';
+    this.url = 'http://hamzatei.fr/projets/lumen-rest-api/public/';
   }
 
   findAll() {
