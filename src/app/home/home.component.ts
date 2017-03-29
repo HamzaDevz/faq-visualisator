@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GridsterConfig } from "angular-gridster2/dist/gridsterConfig.interface";
 import { QuestionService } from '../question/shared/question.service';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'home',
