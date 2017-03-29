@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       compactLeft: true,
       itemChangeCallback: this.itemChange.bind(this),
       margin: 13,
-      maxCols: 4,
+      maxCols: 2,
       outerMargin: true,
       draggable: {
         enabled: true,
