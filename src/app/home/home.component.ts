@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import { GridsterConfig } from "angular-gridster2/dist/gridsterConfig.interface";
 import { QuestionService } from '../question/shared/question.service';
 import * as _ from 'lodash';
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   questions: Array<Object>;
   loader = true;
 
-  constructor (private question: QuestionService) {
+  constructor (private question: QuestionService, private element: ElementRef) {
     question.findAll(false)
         .subscribe(
             questions => {
@@ -28,13 +28,19 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    let margin: number = 13;
+    let container: number = this.element.nativeElement.offsetWidth;
+    let colWidth: number = (container - margin) / 3;
+
     this.options = {
-      gridType: 'scrollVertical',
+      gridType: 'fixed',
       compactUp: true,
       compactLeft: true,
       itemChangeCallback: this.itemChange.bind(this),
-      margin: 13,
-      maxCols: 2,
+      margin: margin,
+      maxCols: 3,
+      fixedColWidth: colWidth,
+      fixedRowHeight: 350,
       outerMargin: true,
       draggable: {
         enabled: true,
