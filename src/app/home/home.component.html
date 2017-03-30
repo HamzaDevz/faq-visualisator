@@ -1,6 +1,11 @@
+<button type="button" (click)="addItem()">Add item</button>
+
 <gridster class="gridster" [options]="options">
     <gridster-item [item]="question" *ngFor="let question of questions">
-        <p>{{question?.content}}</p>
+        <p>
+            <span class="name">{{question?.name}} {{question?.surname}}</span>
+            {{question?.content}}
+        </p>
     </gridster-item>
 
     <div class="loader" *ngIf="loader">
