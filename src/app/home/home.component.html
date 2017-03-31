@@ -2,6 +2,7 @@
 
 <gridster class="gridster" [options]="options">
     <gridster-item [item]="question" *ngFor="let question of questions">
+        <div class="default-color {{question?.color}}" (click)="changeColor(question)"></div>
         <p>
             <span class="name">{{question?.name}} {{question?.surname}}</span>
             {{question?.content}}

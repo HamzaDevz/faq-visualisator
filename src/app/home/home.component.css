@@ -10,6 +10,43 @@
     font-size: 20px;
 }
 
+.gridster gridster-item .default-color {
+    position: absolute;
+    top:0;
+    left:0;
+    cursor: pointer;
+    z-index: 10;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 50px 0 0;
+    border-color: #007bff transparent transparent transparent;
+}
+
+.gridster gridster-item .red {
+    border-color: #EA2F3D transparent transparent transparent;
+}
+
+.gridster gridster-item .orange {
+    border-color: #FF911A transparent transparent transparent;
+}
+
+.gridster gridster-item .yellow {
+    border-color: #FFD200 transparent transparent transparent;
+}
+
+.gridster gridster-item .green {
+    border-color: #8CC63F transparent transparent transparent;
+}
+
+.gridster gridster-item .blue {
+    border-color: #4CB8D2 transparent transparent transparent;
+}
+
+.gridster gridster-item .purple {
+    border-color: #946391 transparent transparent transparent;
+}
+
 .gridster gridster-item > p {
     margin: 0;
     padding: 20px;

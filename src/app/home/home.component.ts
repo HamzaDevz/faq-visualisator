@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   loader = true;
   currentUser: any;
   storage = localStorage;
+  colors = ['red', 'purple', 'blue', 'green', 'yellow', 'orange'];
 
   constructor (private question: QuestionService, private user: UserService, private element: ElementRef) {
     question.findAll(false)
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
                   this.currentUser = _.find(this.users, (user) => user['id'] === parseInt(question.usr_id));
                   question.name = this.currentUser.name;
                   question.surname = this.currentUser.surname;
+                  question.color = this.getColorStorage(question);
                   question.initCallback = this.itemInit.bind(this);
                 });
 
@@ -76,6 +78,7 @@ export class HomeComponent implements OnInit {
               this.currentUser = _.find(this.users, (user) => user['id'] === parseInt(question.usr_id));
               question.name = this.currentUser.name;
               question.surname = this.currentUser.surname;
+              question.color = this.getColorStorage(question);
               question.initCallback = this.itemInit.bind(this);
             });
 
@@ -99,30 +102,52 @@ export class HomeComponent implements OnInit {
       );
   }
 
-  addItem() {
-    this.questions.push([{id: 1, x:0,y:0,cols:1,rows:1}]);
-  }
-
   eventStop(item, scope) {
     console.info('eventStop', item, scope);
   }
 
   itemChange(item, scope) {
     console.info('itemChanged', item, scope);
-    _.forEach(scope.gridster.state.grid, v => this.storage.setItem(`question_${v['id']}`, JSON.stringify({x: v['x'], y: v['y'], cols: v['cols'], rows: v['rows']})));
+    _.forEach(scope.gridster.state.grid, v => this.storage.setItem(`question_${v['id']}`, JSON.stringify({color: v.color, x: v['x'], y: v['y'], cols: v['cols'], rows: v['rows']})));
   }
 
   itemInit(item) {
     let getCoordStorage = this.storage.getItem(`question_${item.id}`);
-    let currentCoord = {x: item.x, y: item.y, cols: item.cols, rows: item.rows};
+    let currentCoord = {color: item.color, x: item.x, y: item.y, cols: item.cols, rows: item.rows};
 
     if (!_.isEmpty(getCoordStorage)) {
       _.merge(item, JSON.parse(getCoordStorage));
     } else {
-      // Set by storage on top !
+      // TODO Set by storage on top !
       this.storage.setItem(`question_${item.id}`, JSON.stringify(currentCoord));
     }
 
     console.info('itemInitialized', item);
+  }
+
+  getColorStorage(item) {
+    let storageData = this.storage.getItem(`question_${item.id}`);
+    let defaultColor = this.colors[0];
+
+    if (storageData) {
+      let dataParsed = JSON.parse(storageData);
+      return (dataParsed.color) ? dataParsed.color : defaultColor;
+    }
+
+    return defaultColor;
+  }
+
+  changeColor(item) {
+    let getStorage = this.storage.getItem(`question_${item.id}`);
+    let storageParsed = JSON.parse(getStorage);
+    let myIndex = _.indexOf(this.colors, item.color);
+
+    myIndex = (myIndex === -1) ? 0 : myIndex+1;
+
+    item.color = this.colors[myIndex];
+
+    // Store color
+    storageParsed.color = item.color;
+    this.storage.setItem(`question_${item.id}`, JSON.stringify(storageParsed));
   }
 }
