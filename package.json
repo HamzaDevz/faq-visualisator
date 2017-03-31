@@ -6,7 +6,8 @@
     "build": "webpack --progress",
     "watch": "npm run build -- --watch",
     "server": "webpack-dev-server --inline --progress --port 3000 --content-base src",
-    "start": "npm run server"
+    "start": "npm run server",
+    "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js"
   },
   "contributors": [
     "Hamza TEI <tei.hamza.dev@gmail.com>"
@@ -37,6 +38,7 @@
     "zone.js": "~0.6.26"
   },
   "devDependencies": {
+    "@angular/cli": "^1.0.0",
     "@types/lodash": "4.14.50",
     "@types/node": "^6.0.48",
     "angular2-router-loader": "^0.3.4",

@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   loader = true;
   currentUser: any;
   storage = localStorage;
-  colors = ['red', 'purple', 'blue', 'green', 'yellow', 'orange'];
+  colors = ['grey', 'red', 'purple', 'blue', 'green', 'yellow', 'orange'];
 
   constructor (private question: QuestionService, private user: UserService, private element: ElementRef) {
     question.findAll(false)
@@ -53,8 +53,8 @@ export class HomeComponent implements OnInit {
 
     this.options = {
       gridType: 'fixed',
-      compactUp: true,
-      compactLeft: true,
+      compactUp: false,
+      compactLeft: false,
       itemChangeCallback: this.itemChange.bind(this),
       margin: margin,
       maxCols: 3,
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
         enabled: true,
         stop: this.eventStop.bind(this)
       },
-      swap: true
+      swap: false
     };
 
     this.question.findAll(true)

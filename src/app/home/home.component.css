@@ -47,6 +47,10 @@
     border-color: #946391 transparent transparent transparent;
 }
 
+.gridster gridster-item .grey {
+    border-color: #ecf0f1 transparent transparent transparent;
+}
+
 .gridster gridster-item > p {
     margin: 0;
     padding: 20px;
